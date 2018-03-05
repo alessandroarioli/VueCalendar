@@ -1,8 +1,13 @@
-import Vue from 'vue'
+import './style.scss';
+import moment from 'moment-timezone';
 
-new Vue({
-  el: '#app',
-  data: {
-    msg: 'Hello World'
+let events = window.__INITAL_STATE__.map(event => {
+  return {
+    description: event.description,
+    date: moment(event.date)
   }
 });
+
+import VueCalendar from './entry';
+
+VueCalendar(events).$mount('#app');
